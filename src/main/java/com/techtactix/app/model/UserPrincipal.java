@@ -18,8 +18,13 @@ public class UserPrincipal implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return Collections.singleton(new SimpleGrantedAuthority("USER"));
-	}
+		 // Spring's hasRole("ADMIN") expects authority "ROLE_ADMIN"
+        String role = user.getRole();
+        if (role == null || role.isBlank()) {
+            role = "USER";
+        }
+        return Collections.singleton(new SimpleGrantedAuthority("ROLE_" + role));
+    }
 
 	@Override
 	public @Nullable String getPassword() {
@@ -30,5 +35,21 @@ public class UserPrincipal implements UserDetails {
 	public String getUsername() {
 		return user.getUsername();
 	}
-
+	
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

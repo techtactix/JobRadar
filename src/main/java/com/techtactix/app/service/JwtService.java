@@ -25,11 +25,11 @@ public class JwtService {
 
 	private static final String SECRET = "TmV3U2VjcmV0S2V5Rm9ySldUU29uZ2luZ21hc2sgZmF2b3I=";
 	
-	private String secretKey;
+//	private String secretKey;
 	
-	public JwtService() {
-		secretKey=this.generateSecretKey();
-	}
+//	public JwtService() {
+//		secretKey=this.generateSecretKey();
+//	}
 	public String generateSecretKey() {
 		 try {
 		 KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
@@ -42,26 +42,33 @@ public class JwtService {
 		}
 
 	
-	public String getToken(String username) {
+	public String getToken(String username,String role) {
 		
 		Map<String, Object> claims=new HashMap<String, Object>();
 		
+		claims.put("role", role);
 		return Jwts.builder()
 				.setClaims(claims)
 				.setSubject(username)
 				.setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + 1000*60*3))
-				.signWith(getkey(), SignatureAlgorithm.HS256).compact();
+				.setExpiration(new Date(System.currentTimeMillis() + 1000*60*60*12))
+				.signWith(getkey(), SignatureAlgorithm.HS256)
+				.compact();
 	}
 
 	private Key getkey() {
-		byte[] keyBytes = Decoders.BASE64.decode(secretKey);
+		byte[] keyBytes = Decoders.BASE64.decode(SECRET);
 		return Keys.hmacShaKeyFor(keyBytes);
 	}
 	public String extractUserName(String token) {
         // extract the username from jwt token
         return extractClaim(token, Claims::getSubject);
     }
+	// helper to read role from token
+	public String extractRole(String token) {
+	    final Claims claims = extractAllClaims(token);
+	    return claims.get("role", String.class);
+	}
 
     private <T> T extractClaim(String token, Function<Claims, T> claimResolver) {
         final Claims claims = extractAllClaims(token);
