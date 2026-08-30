@@ -1,4 +1,4 @@
-# 🎯 JobRadar — RESTful Job Portal API
+#  JobRadar — RESTful Job Portal API
 
 [![Java](https://img.shields.io/badge/Java-21-orange.svg?style=flat&logo=openjdk)](https://www.oracle.com/java/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.x%20%2F%203.x-brightgreen.svg?style=flat&logo=springboot)](https://spring.io/projects/spring-boot)
@@ -10,18 +10,18 @@
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
-* 🔐 **Stateless JWT Authentication**: Secure, token-based sessionless authentication using JJWT (`HMAC-SHA256`).
-* 🛡️ **Role-Based Access Control (RBAC)**: Fine-grained permissions separating standard **`USER`** capabilities (reading and keyword searching) from **`ADMIN`** capabilities (creating, updating, deleting jobs, and data loading).
-* 🔒 **Password Security & Mass-Assignment Protection**: 12-round `BCryptPasswordEncoder` hashing and backend-enforced default roles to prevent privilege escalation.
-* 💼 **Job Management CRUD**: Endpoints for adding, updating, retrieving, and deleting job posts.
-* 🔍 **Keyword Search**: Dynamic job filtering based on tech stack and profile keywords.
-* 📦 **Data Seeding**: Built-in endpoint for loading sample job postings.
+*  **Stateless JWT Authentication**: Secure, token-based sessionless authentication using JJWT (`HMAC-SHA256`).
+*  **Role-Based Access Control (RBAC)**: Fine-grained permissions separating standard **`USER`** capabilities (reading and keyword searching) from **`ADMIN`** capabilities (creating, updating, deleting jobs, and data loading).
+*  **Password Security & Mass-Assignment Protection**: 12-round `BCryptPasswordEncoder` hashing and backend-enforced default roles to prevent privilege escalation.
+*  **Job Management CRUD**: Endpoints for adding, updating, retrieving, and deleting job posts.
+*  **Keyword Search**: Dynamic job filtering based on tech stack and profile keywords.
+*  **Data Seeding**: Built-in endpoint for loading sample job postings.
 
 ---
 
-## 🏗️ Architecture & JWT Authentication Workflow
+##  Architecture & JWT Authentication Workflow
 
 JobRadar uses a stateless security architecture where every protected request is validated via a custom security filter before reaching controller endpoints.
 
@@ -82,7 +82,7 @@ JobRadar uses a stateless security architecture where every protected request is
 
 **Base URL**: `http://localhost:8081`
 
-### 🔑 Authentication Endpoints
+###  Authentication Endpoints
 
 | Method | Endpoint | Access | Description |
 | :--- | :--- | :--- | :--- |
@@ -114,7 +114,7 @@ Content-Type: application/json
 
 ---
 
-### 💼 Job Post Endpoints
+###  Job Post Endpoints
 
 > **Note**: All job endpoints require the header:  
 > `Authorization: Bearer <your_jwt_token>`
@@ -146,7 +146,7 @@ Content-Type: application/json
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 * **Language**: Java 21
 * **Framework**: Spring Boot 4.x / 3.x
@@ -163,7 +163,7 @@ Content-Type: application/json
 
 ---
 
-## ⚙️ Getting Started & Local Setup
+##  Getting Started & Local Setup
 
 ### 1. Prerequisites
 * **Java Development Kit (JDK) 21** or later
@@ -206,7 +206,7 @@ Run using the Maven wrapper:
 
 ---
 
-## 🧪 Testing with Postman
+##  Testing with Postman
 
 1. **Register**: Send `POST http://localhost:8081/register` with JSON body `{"username": "testuser", "password": "password123"}`.
 2. **Login**: Send `POST http://localhost:8081/login` with the same credentials to receive your JWT token.
