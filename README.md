@@ -7,6 +7,7 @@
 [![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)](#)
 
 **JobRadar** is a high-performance, secure backend REST API designed for managing job postings, recruitment workflows, and candidate searches. Built using **Spring Boot**, **Spring Security**, and **PostgreSQL**, JobRadar implements a stateless **JSON Web Token (JWT)** authentication architecture with granular **Role-Based Access Control (RBAC)**.
+Frontend React app to be implemented soon...
 
 ---
 
